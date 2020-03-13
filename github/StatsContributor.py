@@ -76,8 +76,8 @@ class StatsContributor(github.GithubObject.NonCompletableGithubObject):
             self._c = github.GithubObject.NotSet
 
         def _useAttributes(self, attributes):
-        if attributes is None:
-            return
+            if attributes is None:
+                return
             if "w" in attributes:  # pragma no branch
                 self._w = self._makeTimestampAttribute(attributes["w"])
             if "a" in attributes:  # pragma no branch
