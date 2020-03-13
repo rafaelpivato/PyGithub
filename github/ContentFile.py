@@ -189,6 +189,8 @@ class ContentFile(github.GithubObject.CompletableGithubObject):
         self._type = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "content" in attributes:  # pragma no branch
             self._content = self._makeStringAttribute(attributes["content"])
         if "download_url" in attributes:  # pragma no branch

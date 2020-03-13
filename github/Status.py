@@ -57,6 +57,8 @@ class Status(github.GithubObject.NonCompletableGithubObject):
         self._last_updated = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "status" in attributes:  # pragma no branch
             self._status = self._makeStringAttribute(attributes["status"])
         if "last_updated" in attributes:  # pragma no branch

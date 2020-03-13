@@ -172,6 +172,8 @@ class Project(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "body" in attributes:  # pragma no branch
             self._body = self._makeStringAttribute(attributes["body"])
         if "columns_url" in attributes:  # pragma no branch

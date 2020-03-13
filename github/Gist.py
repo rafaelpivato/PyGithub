@@ -339,6 +339,8 @@ class Gist(github.GithubObject.CompletableGithubObject):
         self._user = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "comments" in attributes:  # pragma no branch
             self._comments = self._makeIntAttribute(attributes["comments"])
         if "comments_url" in attributes:  # pragma no branch

@@ -66,6 +66,8 @@ class Rate(github.GithubObject.NonCompletableGithubObject):
         self._reset = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "limit" in attributes:  # pragma no branch
             self._limit = self._makeIntAttribute(attributes["limit"])
         if "remaining" in attributes:  # pragma no branch

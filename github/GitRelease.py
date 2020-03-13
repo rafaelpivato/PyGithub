@@ -270,6 +270,8 @@ class GitRelease(github.GithubObject.CompletableGithubObject):
         self._zipball_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "id" in attributes:
             self._id = self._makeIntAttribute(attributes["id"])
         if "body" in attributes:

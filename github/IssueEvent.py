@@ -218,6 +218,8 @@ class IssueEvent(github.GithubObject.CompletableGithubObject):
         self._lock_reason = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "actor" in attributes:  # pragma no branch
             self._actor = self._makeClassAttribute(github.NamedUser.NamedUser, attributes["actor"])
         if "commit_id" in attributes:  # pragma no branch

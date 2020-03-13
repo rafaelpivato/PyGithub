@@ -68,6 +68,8 @@ class HookResponse(github.GithubObject.NonCompletableGithubObject):
         self._status = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "code" in attributes:  # pragma no branch
             self._code = self._makeIntAttribute(attributes["code"])
         if "message" in attributes:  # pragma no branch

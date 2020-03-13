@@ -120,6 +120,8 @@ class GitRef(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "object" in attributes:  # pragma no branch
             self._object = self._makeClassAttribute(github.GitObject.GitObject, attributes["object"])
         if "ref" in attributes:  # pragma no branch

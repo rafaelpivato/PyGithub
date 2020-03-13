@@ -125,6 +125,8 @@ class ProjectColumn(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "cards_url" in attributes:  # pragma no branch
             self._cards_url = self._makeStringAttribute(attributes["cards_url"])
         if "created_at" in attributes:  # pragma no branch

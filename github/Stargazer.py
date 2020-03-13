@@ -57,6 +57,8 @@ class Stargazer(github.GithubObject.NonCompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if 'starred_at' in attributes:
             self._starred_at = self._makeDatetimeAttribute(attributes['starred_at'])
         if 'user' in attributes:

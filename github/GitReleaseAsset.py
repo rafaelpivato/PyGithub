@@ -192,6 +192,8 @@ class GitReleaseAsset(github.GithubObject.CompletableGithubObject):
         self._browser_download_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "url" in attributes:  # pragma no branch
             self._url = self._makeStringAttribute(attributes["url"])
         if "id" in attributes:  # pragma no branch

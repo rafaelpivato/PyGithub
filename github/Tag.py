@@ -82,6 +82,8 @@ class Tag(github.GithubObject.NonCompletableGithubObject):
         self._zipball_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "commit" in attributes:  # pragma no branch
             self._commit = self._makeClassAttribute(github.Commit.Commit, attributes["commit"])
         if "name" in attributes:  # pragma no branch

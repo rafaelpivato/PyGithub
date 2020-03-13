@@ -99,6 +99,8 @@ class CommitCombinedStatus(github.GithubObject.NonCompletableGithubObject):
         self._statuses = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "state" in attributes:  # pragma no branch
             self._state = self._makeStringAttribute(attributes["state"])
         if "sha" in attributes:  # pragma no branch

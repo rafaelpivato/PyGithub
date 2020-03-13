@@ -122,6 +122,8 @@ class RepositoryKey(github.GithubObject.CompletableGithubObject):
         self._read_only = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "created_at" in attributes:  # pragma no branch
             self._created_at = self._makeDatetimeAttribute(attributes["created_at"])
         if "id" in attributes:  # pragma no branch

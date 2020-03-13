@@ -521,6 +521,8 @@ class Issue(github.GithubObject.CompletableGithubObject):
         self._user = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "assignee" in attributes:  # pragma no branch
             self._assignee = self._makeClassAttribute(github.NamedUser.NamedUser, attributes["assignee"])
         if "assignees" in attributes:  # pragma no branch

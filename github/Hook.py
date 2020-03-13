@@ -212,6 +212,8 @@ class Hook(github.GithubObject.CompletableGithubObject):
         self._ping_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "active" in attributes:  # pragma no branch
             self._active = self._makeBoolAttribute(attributes["active"])
         if "config" in attributes:  # pragma no branch

@@ -94,6 +94,8 @@ class Invitation(github.GithubObject.CompletableGithubObject):
         self._repository = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "repository" in attributes:  # pragma no branch
             self._assignee = self._makeClassAttribute(github.Repository.Repository, attributes["repository"])
         if "created_at" in attributes:  # pragma no branch

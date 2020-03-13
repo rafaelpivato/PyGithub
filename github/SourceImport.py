@@ -158,6 +158,8 @@ class SourceImport(github.GithubObject.CompletableGithubObject):
         self._vcs_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "authors_count" in attributes:  # pragma no branch
             self._authors_count = self._makeIntAttribute(attributes["authors_count"])
         if "authors_url" in attributes:  # pragma no branch

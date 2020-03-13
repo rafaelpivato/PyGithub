@@ -2693,6 +2693,8 @@ class Repository(github.GithubObject.CompletableGithubObject):
         self._watchers_count = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "allow_merge_commit" in attributes:  # pragma no branch
             self._allow_merge_commit = self._makeBoolAttribute(attributes["allow_merge_commit"])
         if "allow_rebase_merge" in attributes:  # pragma no branch

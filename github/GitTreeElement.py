@@ -92,6 +92,8 @@ class GitTreeElement(github.GithubObject.NonCompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "mode" in attributes:  # pragma no branch
             self._mode = self._makeStringAttribute(attributes["mode"])
         if "path" in attributes:  # pragma no branch

@@ -138,6 +138,8 @@ class License(github.GithubObject.CompletableGithubObject):
         self._limitations = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "key" in attributes:  # pragma no branch
             self._key = self._makeStringAttribute(attributes["key"])
         if "name" in attributes:  # pragma no branch

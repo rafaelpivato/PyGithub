@@ -55,6 +55,8 @@ class StatsParticipation(github.GithubObject.NonCompletableGithubObject):
         self._owner = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "all" in attributes:  # pragma no branch
             self._all = self._makeListOfIntsAttribute(attributes["all"])
         if "owner" in attributes:  # pragma no branch

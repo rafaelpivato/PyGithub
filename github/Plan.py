@@ -76,6 +76,8 @@ class Plan(github.GithubObject.NonCompletableGithubObject):
         self._space = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "collaborators" in attributes:  # pragma no branch
             self._collaborators = self._makeIntAttribute(attributes["collaborators"])
         if "name" in attributes:  # pragma no branch

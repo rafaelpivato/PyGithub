@@ -64,6 +64,8 @@ class StatusMessage(github.GithubObject.NonCompletableGithubObject):
         self._created_on = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "body" in attributes:  # pragma no branch
             self._body = self._makeStringAttribute(attributes["body"])
         if "status" in attributes:  # pragma no branch

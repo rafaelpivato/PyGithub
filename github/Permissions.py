@@ -72,6 +72,8 @@ class Permissions(github.GithubObject.NonCompletableGithubObject):
         self._push = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "admin" in attributes:  # pragma no branch
             self._admin = self._makeBoolAttribute(attributes["admin"])
         if "pull" in attributes:  # pragma no branch

@@ -233,6 +233,8 @@ class GistHistoryState(github.GithubObject.CompletableGithubObject):
         self._version = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "change_status" in attributes:  # pragma no branch
             self._change_status = self._makeClassAttribute(github.CommitStats.CommitStats, attributes["change_status"])
         if "comments" in attributes:  # pragma no branch

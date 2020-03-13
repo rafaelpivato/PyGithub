@@ -105,6 +105,8 @@ class BranchProtection(github.GithubObject.CompletableGithubObject):
         self._team_push_restrictions = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "url" in attributes:  # pragma no branch
             self._url = self._makeStringAttribute(attributes["url"])
         if "required_status_checks" in attributes:  # pragma no branch

@@ -63,6 +63,8 @@ class RequiredStatusChecks(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "strict" in attributes:  # pragma no branch
             self._strict = self._makeBoolAttribute(attributes["strict"])
         if "contexts" in attributes:  # pragma no branch

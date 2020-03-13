@@ -67,6 +67,8 @@ class InstallationAuthorization(github.GithubObject.NonCompletableGithubObject):
         self._on_behalf_of = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "token" in attributes:  # pragma no branch
             self._token = self._makeStringAttribute(attributes["token"])
         if "expires_at" in attributes:  # pragma no branch

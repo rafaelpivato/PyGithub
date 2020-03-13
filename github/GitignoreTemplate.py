@@ -59,6 +59,8 @@ class GitignoreTemplate(github.GithubObject.NonCompletableGithubObject):
         self._name = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "source" in attributes:  # pragma no branch
             self._source = self._makeStringAttribute(attributes["source"])
         if "name" in attributes:  # pragma no branch

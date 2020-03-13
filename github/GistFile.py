@@ -92,6 +92,8 @@ class GistFile(github.GithubObject.NonCompletableGithubObject):
         self._type = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "content" in attributes:  # pragma no branch
             self._content = self._makeStringAttribute(attributes["content"])
         if "filename" in attributes:  # pragma no branch

@@ -375,6 +375,8 @@ class Team(github.GithubObject.CompletableGithubObject):
         self._privacy = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "id" in attributes:  # pragma no branch
             self._id = self._makeIntAttribute(attributes["id"])
         if "members_count" in attributes:  # pragma no branch

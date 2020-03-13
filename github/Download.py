@@ -234,6 +234,8 @@ class Download(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "accesskeyid" in attributes:  # pragma no branch
             self._accesskeyid = self._makeStringAttribute(attributes["accesskeyid"])  # pragma no cover (was covered only by create_download, which has been removed)
         if "acl" in attributes:  # pragma no branch

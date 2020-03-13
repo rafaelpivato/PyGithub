@@ -170,6 +170,8 @@ class Authorization(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "app" in attributes:  # pragma no branch
             self._app = self._makeClassAttribute(github.AuthorizationApplication.AuthorizationApplication, attributes["app"])
         if "created_at" in attributes:  # pragma no branch

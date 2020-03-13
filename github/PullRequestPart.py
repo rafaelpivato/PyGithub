@@ -87,6 +87,8 @@ class PullRequestPart(github.GithubObject.NonCompletableGithubObject):
         self._user = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "label" in attributes:  # pragma no branch
             self._label = self._makeStringAttribute(attributes["label"])
         if "ref" in attributes:  # pragma no branch

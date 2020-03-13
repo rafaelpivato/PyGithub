@@ -134,6 +134,8 @@ class File(github.GithubObject.NonCompletableGithubObject):
         self._status = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "additions" in attributes:  # pragma no branch
             self._additions = self._makeIntAttribute(attributes["additions"])
         if "blob_url" in attributes:  # pragma no branch

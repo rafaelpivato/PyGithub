@@ -92,6 +92,8 @@ class RequiredPullRequestReviews(github.GithubObject.CompletableGithubObject):
         self._teams = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "dismissal_restrictions" in attributes:  # pragma no branch
             if "users" in attributes["dismissal_restrictions"]:
                 self._users = self._makeListOfClassesAttribute(github.NamedUser.NamedUser, attributes["dismissal_restrictions"]["users"])

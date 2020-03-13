@@ -68,6 +68,8 @@ class GitObject(github.GithubObject.NonCompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "sha" in attributes:  # pragma no branch
             self._sha = self._makeStringAttribute(attributes["sha"])
         if "type" in attributes:  # pragma no branch

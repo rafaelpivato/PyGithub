@@ -64,6 +64,8 @@ class IssuePullRequest(github.GithubObject.NonCompletableGithubObject):
         self._patch_url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "diff_url" in attributes:  # pragma no branch
             self._diff_url = self._makeStringAttribute(attributes["diff_url"])
         if "html_url" in attributes:  # pragma no branch

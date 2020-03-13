@@ -112,6 +112,8 @@ class Event(github.GithubObject.NonCompletableGithubObject):
         self._type = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "actor" in attributes:  # pragma no branch
             self._actor = self._makeClassAttribute(github.NamedUser.NamedUser, attributes["actor"])
         if "created_at" in attributes:  # pragma no branch

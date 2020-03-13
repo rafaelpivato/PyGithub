@@ -64,6 +64,8 @@ class CommitStats(github.GithubObject.NonCompletableGithubObject):
         self._total = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "additions" in attributes:  # pragma no branch
             self._additions = self._makeIntAttribute(attributes["additions"])
         if "deletions" in attributes:  # pragma no branch

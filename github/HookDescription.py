@@ -76,6 +76,8 @@ class HookDescription(github.GithubObject.NonCompletableGithubObject):
         self._supported_events = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "events" in attributes:  # pragma no branch
             self._events = self._makeListOfStringsAttribute(attributes["events"])
         if "name" in attributes:  # pragma no branch

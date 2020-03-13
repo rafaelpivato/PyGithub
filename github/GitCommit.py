@@ -123,6 +123,8 @@ class GitCommit(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "author" in attributes:  # pragma no branch
             self._author = self._makeClassAttribute(github.GitAuthor.GitAuthor, attributes["author"])
         if "committer" in attributes:  # pragma no branch

@@ -222,6 +222,8 @@ class Milestone(github.GithubObject.CompletableGithubObject):
         self._url = github.GithubObject.NotSet
 
     def _useAttributes(self, attributes):
+        if attributes is None:
+            return
         if "closed_issues" in attributes:  # pragma no branch
             self._closed_issues = self._makeIntAttribute(attributes["closed_issues"])
         if "created_at" in attributes:  # pragma no branch
